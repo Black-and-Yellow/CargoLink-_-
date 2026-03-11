@@ -5,7 +5,7 @@ import { useNotification } from '../../context/NotificationContext';
 import Header from '../../components/common/Header';
 import './ManagerDashboard.css';
 
-const API_BASE = 'http://localhost:3000';
+const API_BASE = 'https://cargolink-489712.el.r.appspot.com';
 
 const statusBadge = (status) => {
   const styles = {

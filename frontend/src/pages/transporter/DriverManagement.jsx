@@ -247,7 +247,7 @@ export default function DriverManagement() {
                       <div className="driver-card-header">
                         <div className="driver-avatar">
                           {driver.profilePicture ? (
-                            <img src={`http://localhost:3000${driver.profilePicture}`} alt="" />
+                            <img src={`https://cargolink-489712.el.r.appspot.com${driver.profilePicture}`} alt="" />
                           ) : (
                             (driver.firstName || '?')[0].toUpperCase()
                           )}
@@ -305,7 +305,7 @@ export default function DriverManagement() {
                         <div className="request-card-header">
                           <div className="driver-avatar">
                             {driver.profilePicture ? (
-                              <img src={`http://localhost:3000${driver.profilePicture}`} alt="" />
+                              <img src={`https://cargolink-489712.el.r.appspot.com${driver.profilePicture}`} alt="" />
                             ) : (
                               (driver.firstName || '?')[0].toUpperCase()
                             )}

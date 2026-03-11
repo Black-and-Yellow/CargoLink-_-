@@ -13,7 +13,7 @@ import { useNotification } from '../../context/NotificationContext';
 import Header from '../../components/common/Header';
 import './ManagerSupport.css';
 
-const API_BASE = 'http://localhost:3000';
+const API_BASE = 'https://cargolink-489712.el.r.appspot.com';
 
 const STATUS_OPTIONS = ['open', 'in_progress', 'closed'];
 const ROLE_OPTIONS = ['customer', 'transporter', 'driver'];

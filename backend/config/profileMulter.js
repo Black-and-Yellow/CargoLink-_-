@@ -1,13 +1,10 @@
 import multer from 'multer';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import os from 'os';
 import fs from 'fs';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Create uploads directory for profile pictures if it doesn't exist
-const uploadsDir = path.join(__dirname, '..', 'uploads', 'profile-pictures');
+// Use /tmp on App Engine (read-only filesystem except /tmp)
+const uploadsDir = path.join(os.tmpdir(), 'uploads', 'profile-pictures');
 if (!fs.existsSync(uploadsDir)) {
     fs.mkdirSync(uploadsDir, { recursive: true });
 }

@@ -5,7 +5,7 @@
 
 import tokenStorage from './token';
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://cargolink-489712.el.r.appspot.com';
 
 let isRefreshing = false;
 let failedQueue = [];

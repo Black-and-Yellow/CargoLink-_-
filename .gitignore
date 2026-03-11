@@ -23,6 +23,8 @@ lerna-debug.log*
 .env
 .env.*
 !.env.example
+*.yaml
+*.yml
 
 # OS junk
 .DS_Store
