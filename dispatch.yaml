@@ -1,3 +1,0 @@
-dispatch:
-  - url: "cargolink.muthuraja.tech/*"
-    service: frontend

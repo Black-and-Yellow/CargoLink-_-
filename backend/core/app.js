@@ -26,11 +26,9 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
 };
-
-// Explicitly handle preflight OPTIONS requests FIRST so they are never blocked
-// by downstream middleware (Helmet, rate limiter, auth, etc.)
-app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
+
+// Explicitly handle preflight OPTIONS requests handled implicitly by app.use(cors) above
 
 app.use(
   helmet({
