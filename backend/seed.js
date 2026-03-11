@@ -62,39 +62,39 @@ const futureDate = (daysAhead) => new Date(Date.now() + daysAhead * 86400000);
 // ─── Indian cities with realistic coordinates [lng, lat] ──────────────────────
 const INDIAN_LOCATIONS = [
   // ── North India corridor ──
-  { city: "New Delhi",      state: "Delhi",            pin: "110001", street: "Connaught Place",         coords: [77.2090, 28.6139] },
-  { city: "Gurugram",       state: "Haryana",          pin: "122001", street: "Cyber City, Sector 24",   coords: [77.0266, 28.4595] },
-  { city: "Jaipur",         state: "Rajasthan",        pin: "302001", street: "MI Road",                 coords: [75.7873, 26.9124] },
-  { city: "Lucknow",        state: "Uttar Pradesh",    pin: "226001", street: "Hazratganj",              coords: [80.9462, 26.8467] },
-  { city: "Chandigarh",     state: "Chandigarh",       pin: "160001", street: "Sector 17",               coords: [76.7794, 30.7333] },
-  { city: "Amritsar",       state: "Punjab",           pin: "143001", street: "Hall Bazaar",             coords: [74.8723, 31.6340] },
+  { city: "New Delhi", state: "Delhi", pin: "110001", street: "Connaught Place", coords: [77.2090, 28.6139] },
+  { city: "Gurugram", state: "Haryana", pin: "122001", street: "Cyber City, Sector 24", coords: [77.0266, 28.4595] },
+  { city: "Jaipur", state: "Rajasthan", pin: "302001", street: "MI Road", coords: [75.7873, 26.9124] },
+  { city: "Lucknow", state: "Uttar Pradesh", pin: "226001", street: "Hazratganj", coords: [80.9462, 26.8467] },
+  { city: "Chandigarh", state: "Chandigarh", pin: "160001", street: "Sector 17", coords: [76.7794, 30.7333] },
+  { city: "Amritsar", state: "Punjab", pin: "143001", street: "Hall Bazaar", coords: [74.8723, 31.6340] },
 
   // ── West India corridor ──
-  { city: "Mumbai",         state: "Maharashtra",      pin: "400001", street: "Fort, CST Road",          coords: [72.8777, 19.0760] },
-  { city: "Pune",           state: "Maharashtra",      pin: "411001", street: "Shivaji Nagar",           coords: [73.8567, 18.5204] },
-  { city: "Ahmedabad",      state: "Gujarat",          pin: "380001", street: "Relief Road",             coords: [72.5714, 23.0225] },
-  { city: "Surat",          state: "Gujarat",          pin: "395001", street: "Ring Road",               coords: [72.8311, 21.1702] },
-  { city: "Nashik",         state: "Maharashtra",      pin: "422001", street: "College Road",            coords: [73.7898, 19.9975] },
+  { city: "Mumbai", state: "Maharashtra", pin: "400001", street: "Fort, CST Road", coords: [72.8777, 19.0760] },
+  { city: "Pune", state: "Maharashtra", pin: "411001", street: "Shivaji Nagar", coords: [73.8567, 18.5204] },
+  { city: "Ahmedabad", state: "Gujarat", pin: "380001", street: "Relief Road", coords: [72.5714, 23.0225] },
+  { city: "Surat", state: "Gujarat", pin: "395001", street: "Ring Road", coords: [72.8311, 21.1702] },
+  { city: "Nashik", state: "Maharashtra", pin: "422001", street: "College Road", coords: [73.7898, 19.9975] },
 
   // ── South India corridor ──
-  { city: "Bengaluru",      state: "Karnataka",        pin: "560001", street: "MG Road",                 coords: [77.5946, 12.9716] },
-  { city: "Chennai",        state: "Tamil Nadu",       pin: "600001", street: "Anna Salai",              coords: [80.2707, 13.0827] },
-  { city: "Hyderabad",      state: "Telangana",        pin: "500001", street: "Abids",                   coords: [78.4867, 17.3850] },
-  { city: "Kochi",          state: "Kerala",           pin: "682001", street: "MG Road, Ernakulam",      coords: [76.2673, 9.9312]  },
-  { city: "Coimbatore",     state: "Tamil Nadu",       pin: "641001", street: "RS Puram",                coords: [76.9558, 11.0168] },
-  { city: "Mysuru",         state: "Karnataka",        pin: "570001", street: "Sayyaji Rao Road",        coords: [76.6394, 12.2958] },
-  { city: "Visakhapatnam",  state: "Andhra Pradesh",   pin: "530001", street: "Dwaraka Nagar",           coords: [83.2185, 17.6868] },
+  { city: "Bengaluru", state: "Karnataka", pin: "560001", street: "MG Road", coords: [77.5946, 12.9716] },
+  { city: "Chennai", state: "Tamil Nadu", pin: "600001", street: "Anna Salai", coords: [80.2707, 13.0827] },
+  { city: "Hyderabad", state: "Telangana", pin: "500001", street: "Abids", coords: [78.4867, 17.3850] },
+  { city: "Kochi", state: "Kerala", pin: "682001", street: "MG Road, Ernakulam", coords: [76.2673, 9.9312] },
+  { city: "Coimbatore", state: "Tamil Nadu", pin: "641001", street: "RS Puram", coords: [76.9558, 11.0168] },
+  { city: "Mysuru", state: "Karnataka", pin: "570001", street: "Sayyaji Rao Road", coords: [76.6394, 12.2958] },
+  { city: "Visakhapatnam", state: "Andhra Pradesh", pin: "530001", street: "Dwaraka Nagar", coords: [83.2185, 17.6868] },
 
   // ── East India corridor ──
-  { city: "Kolkata",        state: "West Bengal",      pin: "700001", street: "Park Street",             coords: [88.3639, 22.5726] },
-  { city: "Bhubaneswar",    state: "Odisha",           pin: "751001", street: "Janpath",                 coords: [85.8245, 20.2961] },
-  { city: "Patna",          state: "Bihar",            pin: "800001", street: "Exhibition Road",         coords: [85.1376, 25.6093] },
+  { city: "Kolkata", state: "West Bengal", pin: "700001", street: "Park Street", coords: [88.3639, 22.5726] },
+  { city: "Bhubaneswar", state: "Odisha", pin: "751001", street: "Janpath", coords: [85.8245, 20.2961] },
+  { city: "Patna", state: "Bihar", pin: "800001", street: "Exhibition Road", coords: [85.1376, 25.6093] },
 
   // ── Central India ──
-  { city: "Nagpur",         state: "Maharashtra",      pin: "440001", street: "Sitabuldi",               coords: [79.0882, 21.1458] },
-  { city: "Indore",         state: "Madhya Pradesh",   pin: "452001", street: "MG Road",                 coords: [75.8577, 22.7196] },
-  { city: "Bhopal",         state: "Madhya Pradesh",   pin: "462001", street: "New Market",              coords: [77.4126, 23.2599] },
-  { city: "Raipur",         state: "Chhattisgarh",     pin: "492001", street: "Pandri",                  coords: [81.6296, 21.2514] },
+  { city: "Nagpur", state: "Maharashtra", pin: "440001", street: "Sitabuldi", coords: [79.0882, 21.1458] },
+  { city: "Indore", state: "Madhya Pradesh", pin: "452001", street: "MG Road", coords: [75.8577, 22.7196] },
+  { city: "Bhopal", state: "Madhya Pradesh", pin: "462001", street: "New Market", coords: [77.4126, 23.2599] },
+  { city: "Raipur", state: "Chhattisgarh", pin: "492001", street: "Pandri", coords: [81.6296, 21.2514] },
 ];
 
 // ─── Realistic route corridors (indices into INDIAN_LOCATIONS) ─────────────────
@@ -146,9 +146,9 @@ const TRUCK_DISPLAY_NAMES = {
 const CAPACITIES = { van: 1000, "truck-small": 3000, "truck-medium": 7000, "truck-large": 15000, refrigerated: 5000, flatbed: 20000, container: 18000 };
 
 const FIRST_NAMES = ["Aarav", "Vivaan", "Aditya", "Vihaan", "Arjun", "Sai", "Reyansh", "Ayaan", "Krishna", "Ishaan",
-                      "Ananya", "Priya", "Meera", "Kavya", "Diya", "Riya", "Neha", "Pooja", "Shreya", "Tanvi"];
+  "Ananya", "Priya", "Meera", "Kavya", "Diya", "Riya", "Neha", "Pooja", "Shreya", "Tanvi"];
 const LAST_NAMES = ["Sharma", "Verma", "Patel", "Gupta", "Singh", "Kumar", "Reddy", "Nair", "Joshi", "Iyer",
-                     "Agarwal", "Chopra", "Malhotra", "Banerjee", "Desai", "Kulkarni", "Mehta", "Rao", "Shetty", "Bhatt"];
+  "Agarwal", "Chopra", "Malhotra", "Banerjee", "Desai", "Kulkarni", "Mehta", "Rao", "Shetty", "Bhatt"];
 const COMPANY_NAMES = [
   "Bharat Logistics Pvt Ltd", "Sagar Transport Co", "Hindustan Freight Solutions",
   "Rajputana Carriers", "Deccan Express Logistics", "Ganga Transport Services",
@@ -475,9 +475,9 @@ function buildTrips(orders, transporters, drivers, fleets) {
       // Determine trip status from orders
       const hasCompleted = tripOrders.some((o) => o.status === "Completed");
       const hasInTransit = tripOrders.some((o) => o.status === "In Transit");
-      let tripStatus = "Planned";
+      let tripStatus = "Scheduled";
       if (hasCompleted && !hasInTransit) tripStatus = "Completed";
-      else if (hasInTransit) tripStatus = "In Transit";
+      else if (hasInTransit) tripStatus = "Active";
       else tripStatus = "Scheduled";
 
       // Build stops from order pickup/delivery in sequence
@@ -495,7 +495,7 @@ function buildTrips(orders, transporters, drivers, fleets) {
             pin: order.pickup.pin,
             coordinates: order.pickup.coordinates,
           },
-          status: tripStatus === "Completed" ? "Completed" : oi === 0 && tripStatus === "In Transit" ? "Completed" : "Pending",
+          status: tripStatus === "Completed" ? "Completed" : oi === 0 && tripStatus === "Active" ? "Completed" : "Pending",
         });
       });
       tripOrders.forEach((order) => {
@@ -541,13 +541,13 @@ function buildTrips(orders, transporters, drivers, fleets) {
         order_ids: tripOrders.map((o) => o._id),
         status: tripStatus,
         stops,
-        current_stop_index: tripStatus === "Completed" ? stops.length - 1 : tripStatus === "In Transit" ? Math.floor(stops.length / 2) : 0,
+        current_stop_index: tripStatus === "Completed" ? stops.length - 1 : tripStatus === "Active" ? Math.floor(stops.length / 2) : 0,
         current_location: {
           coordinates: tripOrders[0].pickup.coordinates,
           updated_at: new Date(),
         },
         planned_start_at: startDate,
-        actual_start_at: ["In Transit", "Completed"].includes(tripStatus) ? startDate : undefined,
+        actual_start_at: ["Active", "Completed"].includes(tripStatus) ? startDate : undefined,
         planned_end_at: endDate,
         actual_end_at: tripStatus === "Completed" ? endDate : undefined,
         total_distance_km: totalDist,
@@ -729,20 +729,9 @@ async function seed() {
   await mongoose.connect(MONGO_URI);
   console.log("✅ Connected\n");
 
-  // Drop all collections
-  console.log("🗑️  Dropping existing data...");
-  const collections = [
-    Customer, Transporter, Driver, Fleet, Order, Bid, Trip,
-    Payment, Review, Chat, Manager, InvitationCode, Ticket,
-    ThresholdConfig, DriverApplication,
-  ];
-  for (const Model of collections) {
-    try {
-      await Model.collection.drop();
-    } catch (e) {
-      // collection might not exist yet
-    }
-  }
+  // Drop the entire database to wipe all existing collections and records
+  console.log("🗑️  Dropping existing database completely...");
+  await mongoose.connection.db.dropDatabase();
   console.log("   Done.\n");
 
   if (process.argv.includes("--drop")) {

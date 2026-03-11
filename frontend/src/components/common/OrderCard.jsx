@@ -140,7 +140,7 @@ export default function OrderCard({
         {order.cargo_photo && (
           <div className="cargo-photo-thumbnail">
             <img
-              src={`http://localhost:3000${order.cargo_photo}`}
+              src={`https://cargolink-489712.el.r.appspot.com${order.cargo_photo}`}
               alt="Cargo"
               className="cargo-thumbnail-img"
               onError={(e) => { e.target.style.display = 'none'; }}

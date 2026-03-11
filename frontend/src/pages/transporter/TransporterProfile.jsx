@@ -100,7 +100,7 @@ const TransporterProfile = () => {
                 <div className="profile-avatar-wrapper">
                   {profile?.profileImage ? (
                     <img
-                      src={`http://localhost:3000${profile.profileImage}`}
+                      src={`https://cargolink-489712.el.r.appspot.com${profile.profileImage}`}
                       alt="Profile"
                       className="profile-avatar-large"
                       onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
@@ -359,7 +359,7 @@ const TransporterInfo = ({ profile, dispatch, updateTransporterField }) => {
 
 // Documents Tab Component
 const DocumentsTab = ({ verificationInfo }) => {
-  const API_BASE = 'http://localhost:3000';
+  const API_BASE = 'https://cargolink-489712.el.r.appspot.com';
 
   const statusBadge = (status) => {
     const map = {

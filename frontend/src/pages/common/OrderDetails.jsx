@@ -295,7 +295,7 @@ export default function OrderDetails() {
                 <span className="label">Cargo Photo</span>
                 <div className="cargo-photo-display">
                   <img
-                    src={`http://localhost:3000${order.cargo_photo}`}
+                    src={`https://cargolink-489712.el.r.appspot.com${order.cargo_photo}`}
                     alt="Cargo"
                     className="cargo-photo-full"
                     onError={(e) => { e.target.style.display = 'none'; }}

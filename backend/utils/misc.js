@@ -2,16 +2,21 @@ import path from 'path';
 import nodemailer from 'nodemailer';
 import { createStream } from 'rotating-file-stream';
 import util from 'util';
+import os from 'os';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
-
-
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const logDir = path.join(os.tmpdir(), 'logs');
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true });
+}
+
 const accessLogStream = createStream('access.log', {
   interval: '10m', // Rotate every 10 minutes
-  path: path.join(path.dirname(''), 'logs'),
+  path: logDir,
   teeToStdout: true,
 })
 

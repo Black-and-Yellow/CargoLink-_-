@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import os from 'os';
 import { fileURLToPath } from 'url';
 import router from '../routes/index.js';
 import { requestLogger } from '../middlewares/requestLogger.js';
@@ -14,6 +15,20 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+// CORS configuration — MUST come before Helmet and other middleware
+const corsOptions = {
+  origin: [
+    'http://localhost:5173',
+    'https://frontend-dot-cargolink-489712.el.r.appspot.com',
+    'https://cargolink.muthuraja.tech',
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+};
+app.use(cors(corsOptions));
+
+// Explicitly handle preflight OPTIONS requests handled implicitly by app.use(cors) above
 
 app.use(
   helmet({
@@ -27,6 +42,7 @@ app.use(
     },
 
     crossOriginEmbedderPolicy: false,
+    crossOriginOpenerPolicy: false,  // Disable — was blocking cross-origin postMessage & CORS
     crossOriginResourcePolicy: {
       policy: "cross-origin",
     },
@@ -40,7 +56,7 @@ const limiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 5 minutes
   max: 1000, // limit tO 100R
   message: 'Too many requests from this IP, please try again later.',
-  standardHeaders: true, 
+  standardHeaders: true,
   legacyHeaders: false,
   handler: (req, res, _next, options) => {
     logger.warn('Rate limit exceeded', {
@@ -70,19 +86,13 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// CORS configuration
-app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true,
-}));
-
 // Body parsing middleware - order matters!
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
 
 // Serve uploaded files statically
-app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+app.use('/uploads', express.static(path.join(os.tmpdir(), 'uploads')));
 
 // Set up Routes
 app.use(router);

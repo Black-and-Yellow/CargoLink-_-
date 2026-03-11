@@ -6,7 +6,7 @@ import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import './SupportTickets.css';
 
-const API_BASE = 'http://localhost:3000';
+const API_BASE = 'https://cargolink-489712.el.r.appspot.com';
 
 export default function TicketDetail() {
     const { id } = useParams();

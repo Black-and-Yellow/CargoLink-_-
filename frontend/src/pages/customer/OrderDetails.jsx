@@ -42,7 +42,7 @@ export default function OrderDetails(){
 
   const handlePayNow = () => {
     // open backend paynow endpoint which renders payment success page
-    window.open(`http://localhost:3000/customer/paynow?orderId=${id}`, '_blank');
+    window.open(`https://cargolink-489712.el.r.appspot.com/customer/paynow?orderId=${id}`, '_blank');
   };
 
   const callTransporter = () => {

@@ -285,7 +285,7 @@ const TrackOrderPage = () => {
                       <p className="detail-label">Cargo Photo</p>
                       <div className="cargo-photo-wrapper">
                         <img
-                          src={`http://localhost:3000${currentOrder.cargo_photo}`}
+                          src={`https://cargolink-489712.el.r.appspot.com${currentOrder.cargo_photo}`}
                           alt="Cargo"
                           className="cargo-photo"
                           onError={(e) => { e.target.style.display = 'none'; }}
