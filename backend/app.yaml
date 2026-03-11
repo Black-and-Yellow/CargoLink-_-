@@ -1,0 +1,49 @@
+runtime: nodejs20
+env: standard
+instance_class: F1
+
+handlers:
+  - url: /.*
+    script: auto
+    secure: always
+
+env_variables:
+  JWT_ACCESS_EXPIRY: "30m"
+  JWT_REFRESH_EXPIRY: "7d"
+
+secret_env_variables:
+  - name: MONGO_URI
+    secret: MONGO_URI
+    version: latest
+
+  - name: JWT_ACCESS_SECRET
+    secret: JWT_ACCESS_SECRET
+    version: latest
+
+  - name: JWT_REFRESH_SECRET
+    secret: JWT_REFRESH_SECRET
+    version: latest
+
+  - name: GOOGLE_CLIENT_ID
+    secret: GOOGLE_CLIENT_ID
+    version: latest
+
+  - name: ADMIN_EMAIL
+    secret: ADMIN_EMAIL
+    version: latest
+
+  - name: ADMIN_PASSWORD
+    secret: ADMIN_PASSWORD
+    version: latest
+
+  - name: RAZORPAY_KEY_ID
+    secret: RAZORPAY_KEY_ID
+    version: latest
+
+  - name: RAZORPAY_KEY_SECRET
+    secret: RAZORPAY_KEY_SECRET
+    version: latest
+
+  - name: GOOGLE_MAPS_API_KEY
+    secret: GOOGLE_MAPS_API_KEY
+    version: latest

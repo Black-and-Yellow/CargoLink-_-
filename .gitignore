@@ -23,8 +23,9 @@ lerna-debug.log*
 .env
 .env.*
 !.env.example
-*.yaml
-*.yml
+
+# Allow GCP deployment YAML files (secrets are in Secret Manager, not in these files)
+# *.yaml and *.yml are NOT ignored so cloudbuild.yaml, app.yaml, dispatch.yaml get committed
 
 # OS junk
 .DS_Store

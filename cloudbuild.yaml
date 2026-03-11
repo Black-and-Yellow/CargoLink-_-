@@ -1,0 +1,59 @@
+steps:
+
+  - name: "node:20"
+    id: "backend-install"
+    dir: "backend"
+    entrypoint: "npm"
+    args: ["install", "--omit=dev"]
+
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    id: "deploy-backend"
+    waitFor: ["backend-install"]
+    entrypoint: "gcloud"
+    args:
+      - "app"
+      - "deploy"
+      - "backend/app.yaml"
+      - "--quiet"
+      - "--project=$PROJECT_ID"
+
+
+  - name: "node:20"
+    id: "frontend-install"
+    dir: "frontend"
+    entrypoint: "npm"
+    args: ["install"]
+
+  - name: "node:20"
+    id: "frontend-build"
+    waitFor: ["frontend-install"]
+    dir: "frontend"
+    entrypoint: "npm"
+    args: ["run", "build"]
+
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    id: "deploy-frontend"
+    waitFor: ["frontend-build"]
+    entrypoint: "gcloud"
+    args:
+      - "app"
+      - "deploy"
+      - "frontend/app.yaml"
+      - "--quiet"
+      - "--project=$PROJECT_ID"
+
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    id: "deploy-dispatch"
+    waitFor: ["deploy-backend", "deploy-frontend"]
+    entrypoint: "gcloud"
+    args:
+      - "app"
+      - "deploy"
+      - "dispatch.yaml"
+      - "--quiet"
+      - "--project=$PROJECT_ID"
+
+timeout: "1200s"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
