@@ -58,9 +58,30 @@ steps:
     entrypoint: "npm"
     args: ["install"]
 
+  # Write VITE_* env vars that Vite bakes into the static bundle at build time.
+  # Cloud Build secretEnv names must match Secret Manager secret names, so we
+  # remap them to the VITE_-prefixed names that Vite requires.
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    id: "inject-frontend-env"
+    waitFor: ["frontend-install"]
+    dir: "frontend"
+    secretEnv:
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_MAPS_API_KEY
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        # Strip BOM if present
+        GOOGLE_CLIENT_ID="${GOOGLE_CLIENT_ID#$'\xef\xbb\xbf'}"
+        GOOGLE_MAPS_API_KEY="${GOOGLE_MAPS_API_KEY#$'\xef\xbb\xbf'}"
+        printf 'VITE_GOOGLE_CLIENT_ID="%s"\n' "$GOOGLE_CLIENT_ID" > .env.production
+        printf 'VITE_GOOGLE_MAPS_API_KEY="%s"\n' "$GOOGLE_MAPS_API_KEY" >> .env.production
+        echo "Frontend .env.production written"
+
   - name: "node:20"
     id: "frontend-build"
-    waitFor: ["frontend-install"]
+    waitFor: ["inject-frontend-env"]
     dir: "frontend"
     entrypoint: "npm"
     args: ["run", "build"]
