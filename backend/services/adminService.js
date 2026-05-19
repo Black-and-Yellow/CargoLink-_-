@@ -1,4 +1,4 @@
-﻿import adminRepo from '../repositories/adminRepo.js';
+import adminRepo from '../repositories/adminRepo.js';
 import managerService from './managerService.js';
 import ticketService from './ticketService.js';
 import walletRepo from '../repositories/walletRepo.js';
